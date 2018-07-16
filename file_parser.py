@@ -1,12 +1,11 @@
-def file_parcer(file_path, source_text, replace_text=None):
-    '''file parser
-    counts the number of occurrences or replaces the string with a given
+"""
+The program has two modes:
+- Counting the number of occurrences of a string in a text file.
+- Replace a string with another in the specified file.
+"""
 
-    :param file_path: str
-    :param source_text: str
-    :param replace_text: str
-    :return: int, None if file wasn't open
-    '''
+
+def file_parser(file_path, source_text, replace_text=None):
     if not isinstance(file_path, (str)):
         print("TypeError,", 'file path:', file_path)
         return None
@@ -35,9 +34,7 @@ def file_parcer(file_path, source_text, replace_text=None):
 
 
 if __name__ == "__main__":
-    f = 'static_files/lipsum.txt'
-    print((file_parcer(f, 'F')))
-    print((file_parcer(f, 'f', 'F')))
-    print((file_parcer(f, 'f')))
-
-
+    f = 'static/test.txt'
+    print((file_parser(f, 'F')))
+    print((file_parser(f, 'f', 'F')))
+    print((file_parser(f, 'f')))

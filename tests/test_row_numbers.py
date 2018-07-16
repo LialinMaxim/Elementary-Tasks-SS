@@ -10,6 +10,7 @@ class TestRowNumbers(unittest.TestCase):
         self.assertEqual(RowNumbers.validation(-1), 1)
 
         self.assertRaises(TypeError, RowNumbers.validation, '1', 0)
+        self.assertRaises(TypeError, RowNumbers.validation, [], 0)
 
     def test_sequence(self):
         self.assertEqual(RowNumbers.sequence(1), [0, 1])

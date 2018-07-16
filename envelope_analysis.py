@@ -6,6 +6,17 @@ After each count, the program asks whether to continue.
 If the answer is "y" or "yes" or "input" (case-insensitive), the program continues to work first,
 otherwise it completes execution.
 """
+# TODO implementing vie class
+# TODO manual and quit condition
+# TODO тестирование через цыкл, переборка данных
+# TODO диагональ
+
+INSTRUCTIONS = (
+    'WIDTH of the FIRST envelope: ',
+    'HEIGHT of the FIRST envelope: ',
+    'WIDTH of the SECOND envelope: ',
+    'HEIGHT of the SECOND envelope: ',
+)
 
 
 def envelope_analysis(a, b, c, d):
@@ -33,15 +44,9 @@ def text_to_float(text):
 
 def start_terminal():
     dimension = []
-    instructions = [
-        'WIDTH of the FIRST envelope: ',
-        'HEIGHT of the FIRST envelope: ',
-        'WIDTH of the SECOND envelope: ',
-        'HEIGHT of the SECOND envelope: '
-    ]
 
     while len(dimension) < 4:
-        text = input(instructions[len(dimension)])
+        text = input(INSTRUCTIONS[len(dimension)])
         text = text_to_float(text)
         if type(text) == float:
             dimension.append(text)
@@ -49,9 +54,9 @@ def start_terminal():
     a, b, c, d = dimension
     envelope_analysis(a, b, c, d)
 
-    n = input("y/n to repeat :").lower()
+    n = input("y/n to repeat :").lower().strip()
     if n in ('yes', 'y'):
-        return start_terminal()
+        start_terminal()
 
 
 if __name__ == "__main__":

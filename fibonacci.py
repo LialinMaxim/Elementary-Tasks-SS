@@ -11,17 +11,15 @@ class Fibonacci:
         self.last = last
         self.list = self.fib(first, last)
 
-    @staticmethod
-    def validation(first, last):
-        if (type(first) != int) or (type(last) != int):
+    def validation(self):
+        if (type(self.first) != int) or (type(self.last) != int):
             raise TypeError('One of the parameters is not an integer')
-        if first < 0 or last < 0:
+        if self.first < 0 or self.last < 0:
             raise ValueError('One of the parameters is less than zero')
         return True
 
-    @staticmethod
-    def fib(first, last):
-        Fibonacci.validation(first, last)
+    def fib(self, first, last):
+        self.__class__.validation()
 
         '''in case if first > last'''
         if last < first:

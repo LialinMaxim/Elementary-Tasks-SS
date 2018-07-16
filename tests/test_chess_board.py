@@ -1,5 +1,6 @@
 import unittest
-
+from sys import path
+path.append('../')
 from chess_board import ChessBoard
 
 

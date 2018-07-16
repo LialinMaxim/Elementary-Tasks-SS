@@ -1,4 +1,6 @@
 import unittest
+from sys import path
+path.append('../')
 
 import envelope_analysis as env
 

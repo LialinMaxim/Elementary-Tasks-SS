@@ -21,12 +21,12 @@ class ChessBoard:
         """Outputs a chessboard with the given sizes of height and width"""
         new_board = []
         for i in range(self.height):
-            s = ''  # new current line of board
-            for j in range(self.width):
-                if (i + j) % 2 == 0:
-                    s += self.black
-                else:
-                    s += self.white
+            s = ''.join(self.black if (i + j) % 2 == 0 else self.white for j in range(self.width))
             new_board.append(s)
-        return '\n' + '\n'.join(new_board) + '\n'
+        new_board = '\n'.join(new_board)
+        return '\n{}\n'.format(new_board)
 
+
+if __name__ == '__main__':
+    p = ChessBoard(3, 4)
+    print(p)

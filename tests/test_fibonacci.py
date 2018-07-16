@@ -1,4 +1,6 @@
 import unittest
+from sys import path
+path.append('../')
 
 from fibonacci import Fibonacci as Fib
 
