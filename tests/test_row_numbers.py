@@ -1,6 +1,7 @@
 import unittest
-
-from row_numbers import RowNumbers
+from sys import path
+path.append('../')
+from number_to_text import ChessBoard
 
 
 class TestRowNumbers(unittest.TestCase):

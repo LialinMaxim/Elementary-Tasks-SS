@@ -6,30 +6,24 @@ After each count, the program asks whether to continue.
 If the answer is "y" or "yes" or "input" (case-insensitive), the program continues to work first,
 otherwise it completes execution.
 """
-# TODO implementing vie class
-# TODO manual and quit condition
-# TODO тестирование через цыкл, переборка данных
-# TODO диагональ
 
 INSTRUCTIONS = (
-    'WIDTH of the FIRST envelope: ',
     'HEIGHT of the FIRST envelope: ',
-    'WIDTH of the SECOND envelope: ',
+    'WIDTH of the FIRST envelope: ',
     'HEIGHT of the SECOND envelope: ',
+    'WIDTH of the SECOND envelope: ',
 )
 
 
-def envelope_analysis(a, b, c, d):
+def envelope_analysis(h, w, h2, w2):
     # Simple Envelope Analysis (without diagonals)
-    if max(a, b) < max(c, b) and min(a, b) < min(c, d):
-        print("It's possible to put: {}*{} --> {}*{}".format(a, b, c, d))
-        return 1  # for unittest
-    elif max(a, b) > max(c, d) and min(a, b) > min(c, d):
-        print("It's possible to put: {}*{} <-- {}*{}".format(a, b, c, d))
-        return 2  # for unittest
+    # h - height, w - width of envelopes
+    if max(h, w) < max(h2, w) and min(h, w) < min(h2, w2):
+        return "It's possible to put: {}*{} --> {}*{}".format(h, w, h2, w2)
+    elif max(h, w) > max(h2, w2) and min(h, w) > min(h2, w2):
+        return "It's possible to put: {}*{} <-- {}*{}".format(h, w, h2, w2)
     else:
-        print("It's NOT possible to put: {}*{} <--> {}*{}".format(a, b, c, d))
-        return 0  # for unittest
+        return "It's NOT possible to put: {}*{} <--> {}*{}".format(h, w, h2, w2)
 
 
 def text_to_float(text):
@@ -43,6 +37,7 @@ def text_to_float(text):
 
 
 def start_terminal():
+    print('====== ENVELOPE ANALYTICS ======')
     dimension = []
 
     while len(dimension) < 4:
@@ -51,10 +46,10 @@ def start_terminal():
         if type(text) == float:
             dimension.append(text)
 
-    a, b, c, d = dimension
-    envelope_analysis(a, b, c, d)
+    h, w, h2, w2 = dimension
+    print(envelope_analysis(h, w, h2, w2))
 
-    n = input("y/n to repeat :").lower().strip()
+    n = input("[Y / N] :").lower().strip()
     if n in ('yes', 'y'):
         start_terminal()
 

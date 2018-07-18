@@ -1,12 +1,12 @@
-from num2words import num2words  #https://pypi.org/project/num2words/
+from num2words import num2words  # https://pypi.org/project/num2words/
 
 
 def number_to_text(number):
-    '''
+    """
     Converts a number to text in Russian
     :param number: int
     :return: str, None if case of invalid data
-    '''
+    """
 
     try:
         return num2words(number, lang='ru')

@@ -7,15 +7,22 @@ import envelope_analysis as env
 
 class TestEnvelopeAnalysis(unittest.TestCase):
     def test_validation(self):
-        self.assertEqual(env.envelope_analysis(1, 1.0, 1, 1), 0)
-        self.assertEqual(env.envelope_analysis(2.1, 2, 2.2, 2.1), 1)
-        self.assertEqual(env.envelope_analysis(1, 1, 3, 3), 1)
-        self.assertEqual(env.envelope_analysis(3, 3, 1, 1), 2)
+        data_test = (
+            (1, 1.0, 1, 1, "It's NOT possible to put: 1*1.0 <--> 1*1"),
+            (1, 1, 3, 3, "It's possible to put: 1*1 --> 3*3"),
+            (3, 3, 1, 1, "It's possible to put: 3*3 <-- 1*1"),
+        )
+        for h, w, h2, w2, answer in data_test:
+            self.assertEqual(env.envelope_analysis(h, w, h2, w2), answer)
 
     def test_text_to_float(self):
-        self.assertEqual(env.text_to_float('1'), 1.0)
-        self.assertEqual(env.text_to_float('1.'), 1.0)
-        self.assertEqual(env.text_to_float('a'), 'a')
+        data_test = (
+            ('1', 1.0),
+            ('1.', 1.0),
+            ('a', 'a'),
+        )
+        for test, answer in data_test:
+            self.assertEqual(env.text_to_float(test), answer)
 
 
 if __name__ == '__main__':

@@ -14,7 +14,6 @@ from os import path
 
 
 def lucky_check(lst, key):
-    # TODO check lst and key
     key = key.lower()
     if key == 'moscow':
         if sum(lst[:3]) == sum(lst[3:]):
@@ -33,7 +32,6 @@ def lucky_check(lst, key):
 
 
 def lucky_counter(key, start=1, end=999_999):
-    # TODO check start, end
     count = 0
     blank = [0, 0, 0, 0, 0, 0]
     for number in range(start, end + 1):
@@ -43,17 +41,29 @@ def lucky_counter(key, start=1, end=999_999):
     return count
 
 
-def start_console():
-    # TODO open file, terminal
-    # print(path.abspath('.'))
-    # input(Specify the path to the file:)
-    pass
+def terminal():
+    heare = path.abspath('.')
+    repeat = True
+
+    while repeat:
+        f = input('FILE PASS: ')
+        file_path = path.join(heare, f)
+        print(file_path)
+
+        if path.isfile((file_path)):
+            with open(file_path) as f:
+                text = f.read().lower()
+                print('Text from file:', text)
+                for key in ('dnipro', 'moscow', 'peter'):
+                    if key in text:
+                        print(key, (lucky_counter(key)))
+        else:
+            print('FILE NOT FOUND')
+
+        question = input("[Y/N] to continue: ").lower()
+        if question not in ('yes', 'y'):  # or just press ENTER
+            repeat = None
 
 
-# def terminal():
-#     print('TYPE BY COMA: file path, string, replacement')
-#     print('two parameters - counts the number of occurrences')
-#     print('three parameters - makes a line replacement')
-#     repeat = True
-#     while repeat:
-#         data = input(': ').split(',')
+if __name__ == "__main__":
+    terminal()
